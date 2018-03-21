@@ -3,14 +3,22 @@
 //display search box
 
 //on search click, determine if the information input is a zip code or city
-
+const weatherSearch = () => {
+  let weatherSearchQuery = document.querySelector(".searchBox").value;
+  console.log(weatherSearchQuery)
+  if (isNaN(weatherSearchQuery)) {
+    pullWeatherForCity(weatherSearchQuery);
+  }
+  else {
+    pullWeatherForZIP(weatherSearchQuery);
+  }
+}
 
 //if it is a ZIP code, fetch the data for the ZIP code 
 
-let zipName = 33705 //testing
 
-const pullWeatherForZIP = () => {
-  const weatherURLforZIP = "https://api.openweathermap.org/data/2.5/weather?zip=" + zipName + "&APPID=77cb4f5c8963d2633252da804b410344&units=imperial";
+const pullWeatherForZIP = (zipCode) => {
+  const weatherURLforZIP = "https://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "&APPID=77cb4f5c8963d2633252da804b410344&units=imperial";
 
   console.log("starting request");
   fetch(weatherURLforZIP).then((response) => {
@@ -29,9 +37,8 @@ const pullWeatherForZIP = () => {
 
 //if search is a city, fetch the data for the city.
 
-let cityName = "London" //testing
 
-const pullWeatherForCity = () => {
+const pullWeatherForCity = (cityName) => {
   const weatherURLforCity = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=77cb4f5c8963d2633252da804b410344&units=imperial";
 
   console.log("starting request");
@@ -43,15 +50,7 @@ const pullWeatherForCity = () => {
   }).then((weatherForCity) => {
     console.log(weatherForCity);
     const output = document.querySelector(".weatherDataDisplay")
-    output.textContent = `It is currently ${weatherForCity.main.temp} degrees in ${weatherForCity.name}`;
+    output.textContent = `It is currently ${weatherForCity.main.temp} degrees with ${weatherForCity.main.humidity}% humidity in ${weatherForCity.name}`;
   })
   console.log('fired request');
 }
-
-
-
-// Allow the user to type in a place, click the search button, and , using openweathermap.org, get the current weather for that location
-
-// display the weather to user by adding elements to the DOM.
-
-// allow the user to search by zip or city name
