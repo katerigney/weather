@@ -1,3 +1,13 @@
+//Add geolocation
+
+const geoLocate = () => {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      let weatherSearchQuery = position;
+      document.querySelector(".weatherDataDisplay").textContent = position;
+    });  }
+}
+
 //as a user, I should type in a city name or ZIP code and see the current weather for that location on my screen
 
 //display search box
@@ -46,3 +56,5 @@ const pullWeather = (URL) => {
   })
   console.log('fired request');
 }
+
+document.addEventListener("DOMContentLoaded", geoLocate);
