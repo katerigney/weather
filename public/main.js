@@ -2,15 +2,21 @@
 
 const geoLocate = () => {
   if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      let weatherSearchQuery = position;
-      document.querySelector(".weatherDataDisplay").textContent = position;
-    });  }
+    navigator.geolocation.getCurrentPosition(getGeoLocation) 
+    };  
+  }
+  
+function getGeoLocation(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  const weatherURLforLatLong = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&APPID=77cb4f5c8963d2633252da804b410344&units=imperial";
+  console.log("starting request");
+  pullWeather(weatherURLforLatLong);
 }
 
 //as a user, I should type in a city name or ZIP code and see the current weather for that location on my screen
 
-//display search box
+//display search box - (HTML)
 
 //on search click, determine if the information input is a zip code or city
 const weatherSearch = () => {
