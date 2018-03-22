@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Weather</title>
-    <link rel="stylesheet" href="./screen.css">
-  </head>
-  <body>
-    <h1>Get the weather</h1>
-    <section class="hero">
-      <form>
-        <input type="text" class="searchBox">
-        <button type="button" id="searchButton" onclick="weatherSearch()">Search</button>
-      </form>
+
+<head lang="en">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather</title>
+  <link rel="stylesheet" href="./screen.css">
+</head>
+
+<body>
+  <div class="weatherIcon">
+    <img src="./images/sunAndClouds.png">
+  </div>
+  <h1 class="header">Get the weather</h1>
+  <section class="hero">
+    <section class="weather-container">
+      <h2 class="weatherDataDisplay"></h2>
     </section>
-    <section class="weatherDataDisplay"></section>
-    <script src="./main.js" charset="utf-8"></script>
-  </body>
+    <form>
+      <input type="text" class="searchBox">
+      <button type="button" id="searchButton" onclick="weatherSearch()">Search</button>
+    </form>
+  </section>
+
+  <script src="./main.js" charset="utf-8"></script>
+</body>
+
 </html>
 
 <!-- create a simple HTML page that has a text box and a search button -->
